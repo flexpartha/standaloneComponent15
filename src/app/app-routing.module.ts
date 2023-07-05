@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminrouteguardGuard } from './adminrouteguard.guard';
+//import { AdminrouteguardGuard } from './adminrouteguard.guard';
 import { LoginComponent } from './login/login.component';
 import { ManagementguardGuard } from './managementguard.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { adminRouteGuard } from './adminrouteguard.guard';
 
 export const routes: Routes = [
   {
@@ -14,7 +15,7 @@ export const routes: Routes = [
   },
   {
     path:'admin', loadChildren: ()=> import('./administration/administration.module').then(mod =>mod.AdministrationModule),
-    canActivate:[AdminrouteguardGuard]
+    canActivate:[adminRouteGuard]
   },
   {
     path: 'manage', loadChildren: () => import('./management/management.module').then(mod => mod.ManagementModule),

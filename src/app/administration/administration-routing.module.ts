@@ -6,7 +6,7 @@ const routes:Routes = [
   {
     path: '', children:[
       {
-        path: 'useradmin', component:AdminComponent
+        path: '', component:AdminComponent
       },
       {
         path: '', redirectTo:'/login',pathMatch:'full'
