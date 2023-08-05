@@ -1,5 +1,5 @@
 .toolbar {
-    position: absolute;
+    // position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -8,11 +8,22 @@
     align-items: center;
     background-color: #1976d2;
   }
-  
+  .logoItem{
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #1976d2;
+  }
   .toolbar img {
     margin: 0 16px;
   }
-  
+  .logoItem img {
+    margin: 0 16px;
+  }
   .content {
     display: flex;
     margin: 82px auto 32px;

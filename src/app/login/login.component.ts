@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { EmployeeService } from '../httpServ/employee.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   username:any;
   password:any;
 
-  constructor(private router:Router){};
+  constructor(private router:Router,private service:EmployeeService){};
 
   ngOnInit(){
     sessionStorage.clear();
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
 
   authenticateUser(userName: string){
     sessionStorage.setItem('user',userName);
+    this.service.userSubject$.next(userName)
     if(userName == "admin"){
       this.router.navigate(['/admin']);
     } else if(userName == "manager"){ 
