@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
 
 
      // get value with subscribe
+     
     //  this.service.userSubject$.subscribe((res)=>{
     //   this.user$ = res;
     //   console.log(res)
