@@ -1,1 +1,7 @@
-<p>management works!</p>
+<div class="container">
+    <div class="row" *ngFor="let row of rows; let rowIndex = index; ">
+      <div class="item" *ngFor="let col of cols; let colIndex = index"
+      [ngClass]="{'red': (rowIndex + colIndex) % 2 === 0, 'blue': (rowIndex + colIndex) % 2 !== 0}">
+      </div>
+    </div>
+  </div>

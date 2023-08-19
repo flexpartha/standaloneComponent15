@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { EmployeeService } from '../httpServ/employee.service';
 
 @Component({
   selector: 'app-page-not-found',
@@ -11,12 +12,14 @@ import { Router } from '@angular/router';
 })
 export class PageNotFoundComponent implements OnInit {
   
-  constructor(private r:Router){}
+  constructor(private r:Router,private service:EmployeeService){}
 
   ngOnInit(): void {
     
   }
   gotoHome(){
+    //sessionStorage.clear();
+    this.service.userSubject$.next(null)
     this.r.navigate(['/login']);
   }
 }

@@ -22,6 +22,9 @@ export const routes: Routes = [
     canActivate:[ManagementguardGuard]
   },
   {
+    path: 'general', loadChildren: () => import('./General/general.module').then(mod => mod.GeneralModule)
+  },
+  {
     path: '**', component:PageNotFoundComponent
   }
 ];
