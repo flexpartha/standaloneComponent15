@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { ManagementguardGuard } from './managementguard.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { adminRouteGuard } from './adminrouteguard.guard';
+import { ResponsiveTemplateGuard } from './views/responsive-template.guard';
 
 export const routes: Routes = [
   {
@@ -23,6 +24,10 @@ export const routes: Routes = [
   },
   {
     path: 'general', loadChildren: () => import('./General/general.module').then(mod => mod.GeneralModule)
+  },
+  {
+    path: 'template', loadChildren: () => import('./views/responsive-template.module').then(mod => mod.ResponsiveTemplateModule),
+    canLoad:[ResponsiveTemplateGuard]
   },
   {
     path: '**', component:PageNotFoundComponent

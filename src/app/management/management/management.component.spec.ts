@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ManagementComponent } from './management.component';
 
-describe('ManagementComponent', () => {
+fdescribe('ManagementComponent', () => {
   let component: ManagementComponent;
   let fixture: ComponentFixture<ManagementComponent>;
 
@@ -19,5 +19,10 @@ describe('ManagementComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should initialize rows and cols arrays', () => {
+    expect(component.rows.length).toBe(8);
+    expect(component.cols.length).toBe(8);
   });
 });

@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   user:any;
   user$!: Observable<any>;
 
-  constructor(private service:EmployeeService,private _router: Router){
+  constructor(private service:EmployeeService,public _router: Router){
     // get value with subscribe
     this.service.userSubject$.subscribe((res)=>{
         this.user = res;

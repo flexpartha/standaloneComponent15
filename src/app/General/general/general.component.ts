@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { DynamicCompComponent } from './Dynamic/dynamic-comp/dynamic-comp.component';
+import { SafeHtml } from '@angular/platform-browser';
+import { EmployeeService } from 'src/app/httpServ/employee.service';
 
 @Component({
   selector: 'app-general',
@@ -8,9 +10,10 @@ import { DynamicCompComponent } from './Dynamic/dynamic-comp/dynamic-comp.compon
 })
 export class GeneralComponent implements OnInit {
 
-  @ViewChild('dynamic', { read:ViewContainerRef }) viewRef1!: ViewContainerRef;
+  safeValue!: SafeHtml;
+  @ViewChild('dynamic', { read:ViewContainerRef }) viewRef1: any;
 
-  constructor(private viewRef: ViewContainerRef){
+  constructor(private viewRef: ViewContainerRef, private secure:EmployeeService){
     //@ViewChild('dynamic', { read: ViewContainerRef })
   }
 
@@ -25,5 +28,9 @@ export class GeneralComponent implements OnInit {
 
   removeDynamicComponent(): void {
     this.viewRef.clear();
+  }
+
+  getXSSValue(){
+    this.safeValue = this.secure.getSafeHtml("<h1>Sanitization Success</h1>")
   }
 }

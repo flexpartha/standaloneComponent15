@@ -12,7 +12,7 @@ import { EmployeeService } from '../httpServ/employee.service';
 })
 export class PageNotFoundComponent implements OnInit {
   
-  constructor(private r:Router,private service:EmployeeService){}
+  constructor(public r:Router,private service:EmployeeService){}
 
   ngOnInit(): void {
     

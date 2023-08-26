@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit{
   username:any;
   password:any;
 
-  constructor(private router:Router,private service:EmployeeService, private cd:ChangeDetectorRef){};
+  constructor(public router:Router,private service:EmployeeService, private cd:ChangeDetectorRef){};
 
   ngOnInit(){
     sessionStorage.clear();
@@ -38,6 +38,8 @@ export class LoginComponent implements OnInit{
       this.router.navigate(['/manage']);
     } else if(userName == "general"){
       this.router.navigate(['/general'])
+    } else if(userName == "template"){
+      this.router.navigate(['/template'])
     }
   }
 }

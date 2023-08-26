@@ -17,6 +17,8 @@
     align-items: center;
     justify-content: flex-end;
     background-color: #1976d2;
+    -moz-background-origin: border-box;
+    -webkit-background-origin: border-box;
   }
   .toolbar img {
     margin: 0 16px;

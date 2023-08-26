@@ -3,5 +3,11 @@
     <button class="remove-btn" (click)="removeDynamicComponent()">
       Remove component
     </button>
+    <button class="remove-btn" (click)="getXSSValue()">
+      Get XSS Html value
+    </button>
   </div>
   <ng-template #dynamic></ng-template>
+  <div  [innerHTML]="safeValue">
+
+  </div>
