@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row" *ngFor="let row of rows; let rowIndex = index; ">
-      <div class="item" *ngFor="let col of cols; let colIndex = index"
+      <div class="item" *ngFor="let col of cols; let colIndex = index; let odd = odd; let even=even;"
       [ngClass]="{'red': (rowIndex + colIndex) % 2 === 0, 'blue': (rowIndex + colIndex) % 2 !== 0}">
       </div>
     </div>

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ResponsiveTemplateRoutingModule } from './responsive-template-routing.module';
 import { ResponsiveTmpltComponent } from './responsive-tmplt/responsive-tmplt.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { ResponsiveTmpltComponent } from './responsive-tmplt/responsive-tmplt.co
   ],
   imports: [
     CommonModule,
+    FormsModule,
     ResponsiveTemplateRoutingModule
   ]
 })

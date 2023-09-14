@@ -27,4 +27,10 @@ export class EmployeeService {
   getSafeHtml(html:string){
     return this.sanitizer.bypassSecurityTrustHtml(html);
   }
+  getsafeURL(URL:string){
+    return this.sanitizer.bypassSecurityTrustUrl(URL);
+  }
+  getsafeResoueceURL(URL:string){
+    return this.sanitizer.bypassSecurityTrustResourceUrl(URL);
+  }
 }

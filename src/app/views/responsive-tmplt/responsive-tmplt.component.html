@@ -100,6 +100,22 @@
       </div>
   </div>
 </section>
+<section>
+  <input  type="text" placeholder="Enter Number 1" [(ngModel)]="input1">
+<input  type="text" placeholder="Enter Number 2" [(ngModel)]="input2">
+<br/>
+<br/>
+<select (change)="selectionChange($event)">
+  <option>Select Value from Dropdown</option>
+  <option *ngFor="let ops of operator; let i = index">{{ops}}</option>
+</select>
+<br/>
+<br/>
+<button type="button" (click)="GetResult()">Get Result</button>
+<br/>
+<br/>
+<span><strong>{{calculatedRs}}</strong></span>
+</section>
 <footer class="bg-dark text-white py-4">
   <div class="container">
       <div class="row">

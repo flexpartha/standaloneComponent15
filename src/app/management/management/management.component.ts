@@ -13,6 +13,7 @@ export class ManagementComponent implements OnInit {
   rows: number[] = Array(8); // Create an array of length 8
   cols: number[] = Array(8); // Create an array of length 8
   constructor(){}
+  
   ngOnInit(): void {
     
   }
