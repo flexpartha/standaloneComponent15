@@ -41,5 +41,8 @@ export class LoginComponent implements OnInit{
     } else if(userName == "template"){
       this.router.navigate(['/template'])
     }
+    else if(userName == "responsive"){
+      this.router.navigate(['/rwdTemplate'])
+    }
   }
 }

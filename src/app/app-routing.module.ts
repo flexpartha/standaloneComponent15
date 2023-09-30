@@ -30,6 +30,9 @@ export const routes: Routes = [
     canLoad:[ResponsiveTemplateGuard]
   },
   {
+    path: 'rwdTemplate', loadChildren: () => import('./responsiveView/responsive.module').then(mod => mod.ResponsiveModule)
+  },
+  {
     path: '**', component:PageNotFoundComponent
   }
 ];
