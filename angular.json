@@ -35,7 +35,7 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-	            "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
           "configurations": {
@@ -55,7 +55,6 @@
               "outputHashing": "all",
               "optimization": true,
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
@@ -109,6 +108,15 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
@@ -116,6 +124,9 @@
   "cli": {
     "cache": {
       "enabled": false
-    }
+    },
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }

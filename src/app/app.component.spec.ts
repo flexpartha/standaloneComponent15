@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, flush } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { BehaviorSubject } from 'rxjs';
@@ -42,6 +42,7 @@ fdescribe('AppComponent', () => {
     spyOn(sessionStorage, 'getItem').and.returnValue('mockUser');
     component.ngOnInit();
     expect(component.user).toBe('mockUser');
+    flush();
   }));
 
   it('should clear user on logout',fakeAsync(() =>{

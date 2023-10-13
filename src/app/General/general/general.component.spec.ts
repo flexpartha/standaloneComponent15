@@ -1,48 +1,77 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { GeneralComponent } from './general.component';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DynamicCompComponent } from './Dynamic/dynamic-comp/dynamic-comp.component';
 import { EmployeeService } from 'src/app/httpServ/employee.service';
-
-fdescribe('GeneralComponent', () => {
+import { SafeResourceUrl, SafeHtml, DomSanitizer } from '@angular/platform-browser';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { YouTubePlayer } from '@angular/youtube-player';
+describe('GeneralComponent', () => {
   let component: GeneralComponent;
   let fixture: ComponentFixture<GeneralComponent>;
-  let mockEmployeeService: Partial<EmployeeService>;
+  let employeeService: EmployeeService;
+  let sanitizer: DomSanitizer;
+  let httpClient;
+  let httpTestingController;
 
   beforeEach(async () => {
-    mockEmployeeService = {
-      getSafeHtml: jasmine.createSpy('getSafeHtml').and.returnValue('<h1>Sanitization Success</h1>'),
-    };
-    await TestBed.configureTestingModule({
-      declarations: [ GeneralComponent ],
-      providers: [{
-        provide: EmployeeService, useValue: mockEmployeeService
-      }]
-    })
-    .compileComponents();
+    TestBed.configureTestingModule({
+      declarations: [GeneralComponent, DynamicCompComponent, YouTubePlayer],
+      imports: [HttpClientTestingModule],
+      providers: [EmployeeService, DomSanitizer],
+    });
 
+    await TestBed.compileComponents();
+  });
+
+  beforeEach(() => {
     fixture = TestBed.createComponent(GeneralComponent);
     component = fixture.componentInstance;
+    employeeService = TestBed.inject(EmployeeService);
+    sanitizer = TestBed.inject(DomSanitizer);
+    httpClient = TestBed.inject(HttpClient);
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should initialize the component', () => {
+    // Your initialization expectations here
   });
 
   it('should show dynamic component', () => {
     component.showDynamicComponent();
-    // You can add your expectations here based on how you handle dynamic component creation
+    // Test that the dynamic component is created
+    // You may need to use TestBed.createComponent to get the dynamic component and test it
   });
 
   it('should remove dynamic component', () => {
+    component.showDynamicComponent();
     component.removeDynamicComponent();
-    // You can add your expectations here based on how you handle dynamic component removal
+    // Test that the dynamic component is removed
   });
 
-  it('should get sanitized HTML', () => {
+  it('should set safeValue with sanitized HTML', () => {
+    const unsafeHtml = '<h1>Sanitization Success</h1>';
+    const safeHtml: SafeHtml = sanitizer.bypassSecurityTrustHtml(unsafeHtml);
+    spyOn(employeeService, 'getSafeHtml').and.returnValue(safeHtml);
+
     component.getXSSValue();
-    expect(component.safeValue).toBe('<h1>Sanitization Success</h1>');
-    expect(mockEmployeeService.getSafeHtml).toHaveBeenCalled();
+
+    expect(component.safeValue).toEqual(safeHtml);
   });
+
+  it('should set safeURL with sanitized URL', () => {
+    const dangerousUrl = 'javascript:alert("Hi there")';
+    const safeUrl: SafeResourceUrl = sanitizer.bypassSecurityTrustResourceUrl(dangerousUrl);
+    //spyOn(employeeService, 'getSafeURL').and.returnValue(safeUrl);
+
+    component.trustedUrl = component.secure.getsafeURL(dangerousUrl);
+
+    expect(component.trustedUrl).toEqual(safeUrl);
+  });
+
+  // You can write more test cases as needed
 });

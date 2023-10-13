@@ -21,7 +21,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(private service:EmployeeService,public _router: Router){
     // get value with subscribe
-    this.service.userSubject$.pipe(takeUntil(this.destroy$)).subscribe((res)=>{
+    this.service.userSubject$.subscribe((res)=>{
       this.user = res;
       console.log(this.user);
     })
@@ -32,10 +32,10 @@ export class AppComponent implements OnInit, OnDestroy {
      // get value with Asyncpipe
      //this.user$ = this.service.userSubject$.asObservable();
      //console.log(this.user$)
-     const source = interval(1000);
-     const clicks = fromEvent(document, 'click');
-     const result = source.pipe(takeUntil(clicks));
-     result.subscribe(x => console.log(x));
+    //  const source = interval(1000);
+    //  const clicks = fromEvent(document, 'click');
+    //  const result = source.pipe(takeUntil(clicks));
+    //  result.subscribe(x => console.log(x));
   }
 
   logout(){

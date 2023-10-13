@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { adminRouteGuard } from './adminrouteguard.guard';
 
 describe('AdminRouteGuard', () => {
-  
   let router: Router;
 
   beforeEach(() => {

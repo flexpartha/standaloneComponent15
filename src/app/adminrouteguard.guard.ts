@@ -25,8 +25,8 @@ import { Observable } from 'rxjs';
 
 export const adminRouteGuard = () =>{
   const _router = inject(Router);
-  let user = sessionStorage.getItem('user');
-      if(user == 'admin'){
+  const  user = sessionStorage.getItem('user');
+      if(user == 'admin' || user == 'hradmin'){
         return true;
       }
       _router.navigate(['login']);

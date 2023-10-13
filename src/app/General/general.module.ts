@@ -15,7 +15,7 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
   imports: [
     CommonModule,
     GeneralRoutingModule,
-    YouTubePlayerModule
+    YouTubePlayerModule,
   ]
 })
 export class GeneralModule { }

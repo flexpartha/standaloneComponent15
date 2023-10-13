@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit{
   username:any;
   password:any;
 
-  constructor(public router:Router,private service:EmployeeService, private cd:ChangeDetectorRef){};
+  constructor(public router:Router,private service:EmployeeService, private cd:ChangeDetectorRef){}
 
   ngOnInit(){
     sessionStorage.clear();
@@ -40,9 +40,10 @@ export class LoginComponent implements OnInit{
       this.router.navigate(['/general'])
     } else if(userName == "template"){
       this.router.navigate(['/template'])
-    }
-    else if(userName == "responsive"){
+    } else if(userName == "responsive"){
       this.router.navigate(['/rwdTemplate'])
+    } else if(userName == "hradmin"){
+      this.router.navigate(['/admin'])
     }
   }
 }
