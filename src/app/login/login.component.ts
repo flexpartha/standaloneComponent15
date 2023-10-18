@@ -44,6 +44,8 @@ export class LoginComponent implements OnInit{
       this.router.navigate(['/rwdTemplate'])
     } else if(userName == "hradmin"){
       this.router.navigate(['/admin'])
+    } else if(userName == "sidebar"){
+      this.router.navigate(['/sidebar'])
     }
   }
 }

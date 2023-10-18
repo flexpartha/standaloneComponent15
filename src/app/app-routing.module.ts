@@ -33,6 +33,9 @@ export const routes: Routes = [
     path: 'rwdTemplate', loadChildren: () => import('./responsiveView/responsive.module').then(mod => mod.ResponsiveModule)
   },
   {
+    path : 'sidebar', loadChildren: () => import('./sidebarviews/sidebar.module').then(mod => mod.SidebarModule)
+  },
+  {
     path: '**', component:PageNotFoundComponent
   }
 ];
