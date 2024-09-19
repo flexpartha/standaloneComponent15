@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { CanLoad, Route, Router, UrlSegment, UrlTree } from '@angular/router';
+import { Route, Router, UrlSegment, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ResponsiveTemplateGuard implements CanLoad {
+export class ResponsiveTemplateGuard  {
   constructor(private router: Router) {}
   canLoad(
     route: Route,
