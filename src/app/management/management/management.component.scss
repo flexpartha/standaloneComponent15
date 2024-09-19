@@ -2,11 +2,12 @@
     display:flex;
     flex-wrap: wrap;
     max-width: 500px;
+    margin-top: 2%;
   }
   .item{
     width:50px;
     height: 50px;
-    border: 2px solid rgb(10, 10, 10);
+    border: 1px solid #b30866;
     padding: 2%;
     margin-right: 5px;
     margin-bottom: 2px;
@@ -18,8 +19,12 @@
   }
   
   .red{
-    background-color: #fff;
+    background-color: #087d94;
   }
   .blue{
-    background-color: #000;
+    background-color: #b30866;
+  }
+
+  .wild{
+    color: red !important;
   }

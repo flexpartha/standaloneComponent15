@@ -13,14 +13,13 @@ fdescribe('AdminComponent', () => {
   let httpClient;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ AdminComponent, HttpClientTestingModule ],
-      providers: [EmployeeService]
-    })
-    .compileComponents();
+      imports: [AdminComponent, HttpClientTestingModule],
+      providers: [EmployeeService],
+    }).compileComponents();
     httpClient = TestBed.inject(HttpClient);
     fixture = TestBed.createComponent(AdminComponent);
     component = fixture.componentInstance;
-    employeeService = TestBed.inject(EmployeeService)
+    employeeService = TestBed.inject(EmployeeService);
     fixture.detectChanges();
   });
 
@@ -38,20 +37,18 @@ fdescribe('AdminComponent', () => {
     const dummyEmployees = [
       {
         id: 1,
-        firstName: "Henry",
-        lastName: "Holmes",
-        email: "hholmes0@goodreads.com",
+        firstName: 'Henry',
+        lastName: 'Holmes',
+        email: 'hholmes0@goodreads.com',
         hoursWorked: 29,
-        hourlyWage: 19
-      }
+        hourlyWage: 19,
+      },
     ];
-    spyOn(employeeService, 'getAllEmpoyees').and.callFake(() =>{
-      return of(
-        dummyEmployees
-      )
-   });
+    spyOn(employeeService, 'getAllEmpoyees').and.callFake(() => {
+      return of(dummyEmployees);
+    });
     component.getEmployeeList();
 
-    expect(component.employeeList).toEqual(dummyEmployees);
+    expect(component.employeeList$).toEqual(employeeService.getAllEmpoyees());
   });
 });

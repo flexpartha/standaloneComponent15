@@ -6,22 +6,24 @@ import { EmployeeService } from 'src/app/httpServ/employee.service';
 @Component({
   selector: 'app-general',
   templateUrl: './general.component.html',
-  styleUrls: ['./general.component.scss']
+  styleUrls: ['./general.component.scss'],
 })
 export class GeneralComponent implements OnInit {
-
   safeValue!: SafeHtml;
   safeURL!: SafeUrl;
-  dangerousUrl:any;
-  trustedUrl:any;
-  dangerousVideoUrl:any;
-  videoUrl:any;
+  dangerousUrl: any;
+  trustedUrl: any;
+  dangerousVideoUrl: any;
+  videoUrl: any;
   apiLoaded = false;
   videoId = '3IXwN4XJywQ';
-   
-  @ViewChild('dynamic', { read:ViewContainerRef }) viewRef1: any;
 
-  constructor(private viewRef: ViewContainerRef, public secure:EmployeeService){
+  // @ViewChild('dynamic', { read:ViewContainerRef }) viewRef1: any;
+
+  constructor(
+    private viewRef: ViewContainerRef,
+    public secure: EmployeeService
+  ) {
     //@ViewChild('dynamic', { read: ViewContainerRef })
   }
 
@@ -37,7 +39,6 @@ export class GeneralComponent implements OnInit {
     }
     this.dangerousVideoUrl = 'https://www.youtube.com/embed/tgbNymZ7vqY';
     this.videoUrl = this.secure.getsafeResoueceURL(this.dangerousVideoUrl);
-
   }
 
   showDynamicComponent(): void {
@@ -49,8 +50,8 @@ export class GeneralComponent implements OnInit {
     this.viewRef.clear();
   }
 
-  getXSSValue(){
-    this.safeValue = this.secure.getSafeHtml("<h1>Sanitization Success</h1>")
+  getXSSValue() {
+    this.safeValue = this.secure.getSafeHtml('<h1>Sanitization Success</h1>');
   }
 
   // getXSSURIValue(){
