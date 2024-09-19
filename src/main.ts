@@ -27,7 +27,7 @@ bootstrapApplication(AppComponent, {
     BsModalRef,
     DatePipe,
     importProvidersFrom(BrowserAnimationsModule),
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    //{ provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
 }).catch((err) => console.error(err));
 
