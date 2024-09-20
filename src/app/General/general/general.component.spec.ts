@@ -3,8 +3,8 @@ import { GeneralComponent } from './general.component';
 import { DynamicCompComponent } from './Dynamic/dynamic-comp/dynamic-comp.component';
 import { EmployeeService } from 'src/app/httpServ/employee.service';
 import { SafeResourceUrl, SafeHtml, DomSanitizer } from '@angular/platform-browser';
-import { HttpClient } from '@angular/common/http';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { YouTubePlayer } from '@angular/youtube-player';
 describe('GeneralComponent', () => {
   let component: GeneralComponent;
@@ -16,10 +16,10 @@ describe('GeneralComponent', () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [GeneralComponent, DynamicCompComponent, YouTubePlayer],
-      imports: [HttpClientTestingModule],
-      providers: [EmployeeService, DomSanitizer],
-    });
+    declarations: [GeneralComponent, DynamicCompComponent, YouTubePlayer],
+    imports: [],
+    providers: [EmployeeService, DomSanitizer, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
 
     await TestBed.compileComponents();
   });

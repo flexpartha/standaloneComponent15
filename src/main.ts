@@ -1,8 +1,8 @@
 import { provideHttpClient } from '@angular/common/http';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+//import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppComponent } from './app/app.component';
-import { AppModule } from './app/app.module';
+//import { AppModule } from './app/app.module';
 import { routes } from './app/app-routing.module';
 import { provideRouter } from '@angular/router';
 import { provideNgIdleKeepalive } from '@ng-idle/keepalive';
@@ -12,10 +12,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { importProvidersFrom } from '@angular/core';
 import {
   DatePipe,
-  HashLocationStrategy,
-  LocationStrategy,
+  //PathLocationStrategy,
+  //HashLocationStrategy,
+  //LocationStrategy,
 } from '@angular/common';
-//import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { PathLocationStrategy, LocationStrategy } from '@angular/common';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -27,7 +28,7 @@ bootstrapApplication(AppComponent, {
     BsModalRef,
     DatePipe,
     importProvidersFrom(BrowserAnimationsModule),
-    //{ provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: LocationStrategy, useClass: PathLocationStrategy },
   ],
 }).catch((err) => console.error(err));
 

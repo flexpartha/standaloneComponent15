@@ -1,7 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { DomSanitizer } from '@angular/platform-browser';
 import { EmployeeService } from './employee.service';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 fdescribe('EmployeeService', () => {
   let service: EmployeeService;
@@ -9,14 +10,16 @@ fdescribe('EmployeeService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [
-        {provide: DomSanitizer, useValue: {
-          sanitize: () => 'safeString',
-          bypassSecurityTrustHtml: () => 'safeString'
-        }}
-      ]
-    });
+    imports: [],
+    providers: [
+        { provide: DomSanitizer, useValue: {
+                sanitize: () => 'safeString',
+                bypassSecurityTrustHtml: () => 'safeString'
+            } },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting()
+    ]
+});
     service = TestBed.inject(EmployeeService);
     httpMock = TestBed.inject(HttpTestingController);
   });

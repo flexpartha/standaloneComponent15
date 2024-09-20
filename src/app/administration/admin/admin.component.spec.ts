@@ -3,8 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AdminComponent } from './admin.component';
 import { EmployeeService } from 'src/app/httpServ/employee.service';
 import { of } from 'rxjs';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { HttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 fdescribe('AdminComponent', () => {
   let component: AdminComponent;
@@ -13,9 +13,9 @@ fdescribe('AdminComponent', () => {
   let httpClient;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AdminComponent, HttpClientTestingModule],
-      providers: [EmployeeService],
-    }).compileComponents();
+    imports: [AdminComponent],
+    providers: [EmployeeService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+}).compileComponents();
     httpClient = TestBed.inject(HttpClient);
     fixture = TestBed.createComponent(AdminComponent);
     component = fixture.componentInstance;
