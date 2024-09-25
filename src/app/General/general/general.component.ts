@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { DynamicCompComponent } from './Dynamic/dynamic-comp/dynamic-comp.component';
 import { SafeHtml, SafeUrl } from '@angular/platform-browser';
 import { EmployeeService } from 'src/app/httpServ/employee.service';
@@ -11,10 +11,10 @@ import { EmployeeService } from 'src/app/httpServ/employee.service';
 export class GeneralComponent implements OnInit {
   safeValue!: SafeHtml;
   safeURL!: SafeUrl;
-  dangerousUrl: any;
-  trustedUrl: any;
-  dangerousVideoUrl: any;
-  videoUrl: any;
+  dangerousUrl!: string;
+  trustedUrl!: SafeHtml;
+  dangerousVideoUrl!: string;
+  videoUrl!: SafeHtml;
   apiLoaded = false;
   videoId = '3IXwN4XJywQ';
 

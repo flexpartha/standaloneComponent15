@@ -22,7 +22,7 @@ export class EmployeeService {
     return this._http.get<Iemployee[]>(apiUrl);
   }
 
-  getUser(user: any) {
+  getUser(user: string) {
     console.log(user);
     this.userSubject$.next(user);
   }
